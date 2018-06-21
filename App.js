@@ -2,13 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 
-import { addNumber } from './src/store/actions/index';
+import { addNumber, deleteNumber } from './src/store/actions/index';
 
 class App extends React.Component {
   onPressAdd = () => {
     console.log('test')
     this.props.onAddNumber(10)
   }
+
+  onPressDelete = () => {
+    this.props.onDeleteNumber(-10)
+  }
+
+
+  
+
 
 
   render() {
@@ -18,8 +26,14 @@ class App extends React.Component {
         <Button
           onPress={this.onPressAdd}
           title="+10"
-          color="#841584"
+          color="green"
           accessibilityLabel="plusTen"
+        />
+        <Button
+          onPress={this.onPressDelete}
+          title="-10"
+          color="red"
+          accessibilityLabel="minusTen"
         />
       </View>
     );
@@ -43,7 +57,8 @@ mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddNumber: value => dispatch(addNumber(value))
+    onAddNumber: value => dispatch(addNumber(value)),
+    onDeleteNumber: value => dispatch(deleteNumber(value))
   };
 };
 

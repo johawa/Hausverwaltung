@@ -1,5 +1,6 @@
 import {
-  ADD_NUMBER,  
+  ADD_NUMBER,
+  DELETE_NUMBER  
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -9,6 +10,11 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NUMBER:
+      return {
+        ...state,
+        sum: state.sum + action.value
+      };    
+    case DELETE_NUMBER:
       return {
         ...state,
         sum: state.sum + action.value
